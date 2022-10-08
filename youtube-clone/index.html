@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./CSS/style.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
+  <title>Youtube</title>
+</head>
+
+<body>
+  <aside class="sidebar _display--flex _flexDirection--column _alignItems--center">
+    <div class="sidebar__header _display--flex">
+      <div class="hamburger _display--flex _flexDirection--column _alignItems--center _justifyContent--spaceBetween">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <img src="./assets/images/youtube-logo-9.png" width="220"></img>
+    </div>
+    <div class="sidebar__body _display--flex _flexDirection--column">
+      <div class="sidebar__body__part part1">
+        <div class="sidebar__item">
+          <ion-icon name="home"></ion-icon>
+          <span>Início</span>
+        </div>
+        <div class="sidebar__item">
+          <ion-icon name="compass-outline"></ion-icon>
+          <span>Explorar</span>
+        </div>
+        <div class="sidebar__item">
+          <ion-icon name="flash-outline"></ion-icon>
+          <span>Shorts</span>
+        </div>
+        <div class="sidebar__item">
+          <ion-icon name="people-circle-outline"></ion-icon>
+          <span>Inscrições</span>
+        </div>
+      </div>
+      <div class="sidebar__body__part part2">
+        <div class="sidebar__item">
+          <ion-icon name="list-outline"></ion-icon>
+          <span>Biblioteca</span>
+        </div>
+        <div class="sidebar__item">
+          <ion-icon name="timer-outline"></ion-icon>
+          <span>Histórico</span>
+        </div>
+        <div class="sidebar__item">
+          <ion-icon name="logo-youtube"></ion-icon>
+          <span>Seus vídeos</span>
+        </div>
+        <div class="sidebar__item">
+          <ion-icon name="time-outline"></ion-icon>
+          <span>Assistir mais tarde</span>
+        </div>
+        <div class="sidebar__item">
+          <ion-icon name="thumbs-up-outline"></ion-icon>
+          <span>Vídeos marcados como gostei</span>
+        </div>
+      </div>
+      <div class="sidebar__body__part part3">
+        <!-- <br> -->
+        <!-- <br><br> -->
+        <div class="sidebar__item">
+          <span>INSCRIÇÔES</span>
+        </div>
+        <div class="sidebar__item">
+          <img src="./assets/images/unnamed.jpg">
+          <span>TechLead</span>
+        </div>
+        <div class="sidebar__item">
+          <img src="./assets/images/unnamed (1).jpg">
+          <span>Servants of Christ</span>
+        </div>
+        <div class="sidebar__item">
+          <img src="./assets/images/unnamed (2).jpg">
+          <span>Torch of Christ Ministeries</span>
+        </div>
+        <div class="sidebar__item">
+          <img src="./assets/images/channels4_profile.jpg">
+          <span>Coffe and Biblie Time</span>
+        </div>
+        <div class="sidebar__item">
+          <img src="./assets/images/channels4_profile (1).jpg">
+          <span>PIRATE KING</span>
+        </div>
+        <div class="sidebar__item">
+          <img src="./assets/images/channels4_profile (2).jpg">
+          <span>Pinho</span>
+        </div>
+        <div class="sidebar__item">
+          <ion-icon name="chevron-down-outline"></ion-icon>
+          <span>Mostrar mais 11</span>
+        </div>
+      </div>
+      <div class="sidebar__body__part part4">
+        <div class="sidebar__item">
+          <span>EXPLORAR</span>
+        </div>
+        <div class="sidebar__item">
+          <ion-icon name="film-outline"></ion-icon>
+          <span>Filmes</span>
+        </div>
+        <div class="sidebar__item">
+          <ion-icon name="game-controller-outline"></ion-icon>
+          <span>Jogos</span>
+        </div>
+        <div class="sidebar__item">
+          <ion-icon name="earth-outline"></ion-icon>
+          <span>Ao vivo</span>
+        </div>
+        <div class="sidebar__item">
+          <ion-icon name="bulb-outline"></ion-icon>
+          <span>Aprender</span>
+        </div>
+        <div class="sidebar__item">
+          <ion-icon name="american-football-outline"></ion-icon>
+          <span>Esportes</span>
+        </div>
+      </div>
+      <div class="sidebar__body__part part5">
+        <div class="sidebar__item">
+          <ion-icon name="settings-outline"></ion-icon>
+          <span>Configurações</span>
+        </div>
+        <div class="sidebar__item">
+          <ion-icon name="flag-outline"></ion-icon>
+          <span>Histórico de denúncias</span>
+        </div>
+        <div class="sidebar__item">
+          <ion-icon name="help-circle-outline"></ion-icon>
+          <span>Ajuda</span>
+        </div>
+        <div class="sidebar__item">
+          <ion-icon name="alert-outline"></ion-icon>
+          <span>Enviar feedback</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <section class="mainContent">
+    <header class="_display--flex _flexDirection--column mainContent__header">
+      <div class="top">
+        <div class="searchBar _display--flex _justifyContent--spaceBetween _alignItems--center">
+          <label>
+            <input type="text" placeholder="Search">
+          </label>
+          <ion-icon name="search-outline"></ion-icon>
+        </div>
+        <nav class="mainContent__header_navIcons">
+          <a href="#">
+            <ion-icon name="videocam-outline"></ion-icon>
+          </a>
+          <a href="#">
+            <ion-icon name="notifications-outline"></ion-icon>
+          </a>
+          <a href="#">
+            <img src="./assets/images/musk.jpg">
+          </a>
+        </nav>
+      </div>
+      <nav class="tags _display--flex _alignItems--center _justifyContent--spaceBetween">
+        <span>Tudo</span>
+        <span>Mixes</span>
+        <span>Jogos</span>
+        <span>Música</span>
+        <span>Ao vivo</span>
+        <span>Pensamentos</span>
+        <span>História</span>
+        <span>Podcast</span>
+        <span>Cálculo</span>
+        <span>Motivação</span>
+        <span>Humano - Uma Viagem pela Vida</span>
+        <span>Fisiculturismo</span>
+        <span>Memes</span>
+        <span>Ciência da computação</span>
+        <span>Animais</span>
+        <span>Debates</span>
+        <span>Vendas</span>
+        <span>Personagens</span>
+        <span>Enviados recentemente</span>
+        <span>Assistidos</span>
+      </nav>
+    </header>
+    <main class="mainContent__body">
+      <section class="videos _display--flex _flexDirection--column _justifyContent--spaceBetween">
+        <div class="videos__row _display--flex _justifyContent--spaceBetween">
+          <div class="card">
+            <figure class="card__thumb">
+              <img src="./assets/images/81bMiEjYZ54-HD.jpg">
+            </figure>
+            <div class="card__description _display--flex">
+              <figure>
+                <img src="./assets/images/softwhitebellythumb.jpg">
+              </figure>
+              <div class="textDescription _display--flex _flexDirection--column">
+                <h3 class="title">Channel Annoucement-Setember 2022</h3>
+                <p class="channelName">Soft White Underbelly</p>
+                <p class="views">719 mil visualizações &#8226; há 3 semanas</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <figure class="card__thumb">
+              <img src="./assets/images/9ivDUA4Y218-HD.jpg">
+            </figure>
+            <div class="card__description _display--flex">
+              <figure>
+                <img src="./assets/images/Aesthetics_Memes.jpg">
+              </figure>
+              <div class="textDescription _display--flex _flexDirection--column">
+                <h3 class="title">ZYZZ - AFTER DARK - PHONK</h3>
+                <p class="channelName">Aesthetics_Memes</p>
+                <p class="views">1,4 mil visualizações &#8226; há 2 dias</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <figure class="card__thumb">
+              <img src="./assets/images/B5c2zoXjBFE-SD.jpg">
+            </figure>
+            <div class="card__description _display--flex">
+              <figure class="none">
+                <img src="./assets/images/">
+              </figure>
+              <div class="textDescription _display--flex _flexDirection--column">
+                <h3 class="title">Mix de Mqx x Tevvez - Immortals</h3>
+                <p class="channelName">Tevvez, B-Front, Alec Benjamine outros</p>
+                <p class="views"></p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <figure class="card__thumb">
+              <img src="./assets/images/ix0-wWgbEaU-SD.jpg">
+            </figure>
+            <div class="card__description _display--flex">
+              <figure>
+                <img src="./assets/images/cristaodeclarado.jpg">
+              </figure>
+              <div class="textDescription _display--flex _flexDirection--column">
+                <h3 class="title">SÓ PARA MENINAS! PARE DE SENSUALIZAR COM SEU CORPO!</h3>
+                <p class="channelName">Cristão Declarado †</p>
+                <p class="views">9,9 mil visualizações &#8226; há 21 horas</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="videos__row _display--flex _justifyContent--spaceBetween">
+          <div class="card">
+            <figure class="card__thumb">
+              <img src="./assets/images/MSZ7LwzqJa4-HD.jpg">
+            </figure>
+            <div class="card__description _display--flex">
+              <figure>
+                <img src="./assets/images/padre.jpg">
+              </figure>
+              <div class="textDescription _display--flex _flexDirection--column">
+                <h3 class="title">A falácia dos números para enganar os brasileiros</h3>
+                <p class="channelName">Padre Paulo Ricardo</p>
+                <p class="views">160 mil visualizações &#8226; há 8 dias</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <figure class="card__thumb">
+              <img src="./assets/images/ryG0NxPW6QQ-SD.jpg">
+            </figure>
+            <div class="card__description _display--flex">
+              <figure>
+                <img src="./assets/images/buff.jpg">
+              </figure>
+              <div class="textDescription _display--flex _flexDirection--column">
+                <h3 class="title">the ultimate gym stereotypes pt. 7</h3>
+                <p class="channelName">Buff Samson</p>
+                <p class="views">5,9 mil visualizações &#8226; há 1 hora</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <figure class="card__thumb">
+              <img src="./assets/images/B5c2zoXjBFE-SD.jpg">
+            </figure>
+            <div class="card__description _display--flex">
+              <figure class="none">
+                <img src="./assets/images/">
+              </figure>
+              <div class="textDescription _display--flex _flexDirection--column">
+                <h3 class="title">Mix de Mqx x Tevvez - Immortals</h3>
+                <p class="channelName">Tevvez, B-Front, Alec Benjamine outros</p>
+                <p class="views"></p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <figure class="card__thumb">
+              <img src="./assets/images/ix0-wWgbEaU-SD.jpg">
+            </figure>
+            <div class="card__description _display--flex">
+              <figure>
+                <img src="./assets/images/cristaodeclarado.jpg">
+              </figure>
+              <div class="textDescription _display--flex _flexDirection--column">
+                <h3 class="title">SÓ PARA MENINAS! PARE DE SENSUALIZAR COM SEU CORPO!</h3>
+                <p class="channelName">Cristão Declarado †</p>
+                <p class="views">9,9 mil visualizações &#8226; há 21 horas</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </section>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
