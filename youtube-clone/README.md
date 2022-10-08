@@ -1,4 +1,4 @@
-# Static Youtube clone
+# Static Youtube clone - in progess
 
 That's a personal project I've made in order to training my HTML and CSS skills. Basically, it's a static clone of a standard initial page of Youtube.
 Note that it was made on 08/22, so, depending on when you're seeing this project, the design may be diffenrent and outdated.
