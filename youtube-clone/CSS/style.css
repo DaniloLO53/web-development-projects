@@ -1,0 +1,269 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  /* background-color: green; */
+  display: grid;
+  grid-template-columns: 280px auto;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.88rem;
+}
+
+ion-icon {
+  font-size: 24px;
+}
+
+._display--flex { display: flex; }
+
+._flexDirection--column { flex-direction: column; }
+
+._flexDirection--row { flex-direction: row; }
+
+.justifyContent--center { justify-content: center; }
+
+._justifyContent--spaceBetween { justify-content: space-between; }
+
+._alignItems--center { align-items: center; }
+
+._alignItems--spaceBetween { align-items: space-between; }
+
+.none { display: none; }
+
+.mainContent {
+  /* background-color: aqua; */
+  min-height: 100vh;
+  position: relative;
+  z-index: 99;
+}
+
+.mainContent__header {
+  /* background-color: antiquewhite; */
+  height: 115px;
+  width: calc(100% - 280px);
+  left: 280px;
+  /* border-bottom: 1px solid #e5e5e5; */
+  position: fixed;
+}
+
+.searchBar {
+  /* background-color: red; */
+  position: relative;
+  /* padding: 10px; */
+  left: calc(50% - 140px);
+  transform: translate(-50%);
+  width: 500px;
+  height: 100%;
+}
+
+/* por algum motivo não consegui usar as classes de flex. Tive que usar o flex-box no .top */
+.top {
+  /* background-color: green; */
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.searchBar label {
+  width: 90%;
+  height: 71%;
+}
+
+.searchBar input {
+  width: calc(100% + 6px);
+  height: calc(100% + 1px);
+  border: 1px solid black;
+  border-right: none;
+  border-radius: 2px;
+  padding-left: 12px;
+  margin-left: 2px;
+}
+
+.searchBar ion-icon {
+  padding: 8px;
+  border: 1px solid black;
+}
+
+.mainContent__header_navIcons {
+  /* background-color: yellow; */
+  padding: 0 20px 0 20px;
+}
+
+.mainContent__header_navIcons img {
+  width: 52px;
+  border-radius: 50%;
+} 
+
+.mainContent__header_navIcons ion-icon {
+  margin: 15px;
+  /* background-color: rebeccapurple; */
+}
+
+.sidebar {
+  /* background-color: blueviolet; */
+  overflow-y: scroll;
+  position: fixed;
+  height: 100vh;
+}
+
+.sidebar__body {
+  /* background-color: green; */
+  width: 100%;
+}
+
+.sidebar__body__part {
+  padding: 10px 0 10px 0;
+  border-bottom: 1px solid #cfcfcf;
+}
+
+.sidebar__body__part span:first-child {
+  margin-top: 10px 0 10px 0;
+}
+
+.sidebar__item {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px 10px 20px;
+  white-space: nowrap;
+}
+
+.sidebar__item span {
+  margin-left: 25px;
+}
+
+.sidebar__item img {
+  width: 30px;
+  border-radius: 50%;
+}
+
+.sidebar__header {
+  height: 57px;
+  width: 100%;
+  /* background-color: brown; */
+  padding: 15px 45px 15px 45px;
+}
+
+.sidebar__header img {
+  height: 100%;
+  width: calc(100% - 60px);
+  /* background-color: aliceblue; */
+}
+
+.sidebar__header .hamburger {
+  /* background-color: green; */
+  width: 52px;
+  height: 100%;
+  padding: 6px;
+}
+
+.sidebar__header .hamburger span {
+  width: 75%;
+  height: 1px;
+  background-color: black;
+}
+
+.tags {
+  /* background-color: pink; */
+  padding: 30px 0 30px 30px;
+  height: 45px;
+  /* overflow: scroll; */
+  /* width: 100%; */
+  width: fit-content;
+  border-bottom: 1px solid #dfdfdf;
+  border-top: 1px solid #dfdfdf;
+  display: flex;
+}
+
+.tags::-webkit-scrollbar {
+  /* display: none; */
+}
+
+.tags span {
+  background-color: #efefef;
+  border-radius: 50px;
+  padding: 5px 10px 5px 10px;
+  margin: 10px;
+  width: max-content;
+  /* min-width: fit-content; */
+  max-width: 120px;
+  /* flex-basis: fit-content; */
+  max-height: 30px;
+  overflow: hidden;
+  white-space: pre;
+  outline: 5px solid #efefef;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.mainContent__body {
+  /* background-color: red; */
+  position: relative;
+  top: 122px;
+  left: 295px;
+  min-height: calc(100vh - 125px);
+  width: calc(100vw - 296px);
+  z-index: 99;
+  padding: 28px;
+}
+
+.videos {
+  /* background-color: yellow; */
+}
+
+.card {
+  width: 375px;
+  height: 330px;
+  /* background-color: blue; */
+}
+
+.card__thumb {
+  width: 100%;
+  height: 60%;
+}
+
+.card__thumb img {
+  width: 100%;
+  height: 100%;
+}
+
+.card__description {
+  /* background-color: green; */
+  height: 40%;
+  width: 100%;
+}
+
+.card__description figure {
+  width: 15%;
+  /* background-color: purple; */
+  padding-top: 12px;
+  /* display: flex; */
+  /* align-items: center; */
+}
+
+.card__description figure img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.textDescription {
+  width: 85%;
+  /* background-color: aqua; */
+  padding: 22px;
+}
+
+.textDescription :nth-child(2) {
+  margin: 7px 0 7px 0;
+}
+
+.videos__row {
+  margin: 25px 0 25px 0;
+}
