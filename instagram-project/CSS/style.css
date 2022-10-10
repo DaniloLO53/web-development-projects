@@ -1,0 +1,346 @@
+/* | General styles */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+}
+
+input {
+  display: block;
+  padding: 10px;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+}
+
+header {
+  background-color: white;
+  position: fixed;
+  z-index: 8;
+}
+
+ion-icon { cursor: pointer; }
+
+button { background-color: unset; }
+
+/* | General alignment styles */
+
+.spaceBetweenBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alignColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* || Header styles */
+
+.headerContainer {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.headerContainer__menu * { padding-right: 10px; }
+
+.headerContainer__topBar, .fixedBar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+}
+
+.fixedBar {
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  padding: 18px;
+}
+
+/* o focus é devido à acessibilidade para deficientes visuais */
+.headerContainer__topBar ion-icon,
+.headerContainer__topBar ion-icon:hover,
+.headerContainer__topBar ion-icon:focus,
+.fixedBar ion-icon:hover,
+.fixedBar ion-icon:focus {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.headerContainer__instagramLogos,
+.instagramText {
+  width: 33%;
+  justify-content: center;
+}
+
+.headerContainer__instagramLogos figure {
+  border-left: 1px solid #e5e5e5;
+  padding-left: 15px;
+}
+
+.headerContainer__instagramLogos ion-icon { padding-right: 15px; }
+
+.headerContainer__topBar input {
+  display: none;
+  background-color: #fafafa;
+}
+
+/* || Main styles */
+
+.mainContainer {
+  position: relative;
+  top: 88px;
+}
+
+/* ||| Stories style */
+
+.storiesContainer {
+  border: 1px solid #e5e5e5;
+  position: relative;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+.storiesContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.storiesContainer figure {
+  position: relative;
+  justify-content: center;
+  padding: 20px;
+  padding-bottom: 40px;
+  cursor: pointer;
+}
+
+.storiesContainer figure figcaption {
+  position: absolute;
+  /* background-color: rebeccapurple; */
+  top: calc(100% - 30px);
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  max-width: 70px;
+  white-space: nowrap;
+}
+
+/* Não entendi pq precisa do espaço antes do : */
+.storiesContainer figure :first-of-type { position: absolute; }
+
+.storiesContainer figure :first-child { width: 66px; }
+
+.storiesContainer figure :first-child ~ img { z-index: 0; }
+
+.storiesArrow {
+  position: absolute;
+  transform: translate(calc(590px), calc(-50% + 5px));
+  font-size: 26px;
+  display: none;
+}
+
+/* ||| Posts style */
+
+.posts { margin-top: 24px; }
+
+.post {
+  border: solid 1px #e5e5e5;
+  margin-bottom: 60px;
+}
+
+.comentarios {
+  margin-left: 17px;
+  margin-bottom: 10px;
+  color: #8e8e8e;
+}
+
+.comment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.comment p:first-of-type { width: 60%; }
+
+.addComment {  padding: 18px; }
+
+.addComment input {
+  width: 80%;
+  background-color: #e5e5e5;
+}
+
+.comment__userInfo {
+  width: 90%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 8px;
+}
+
+.comment__userInfo p:first-child { font-weight: 700; }
+
+.comment__userInfo p:nth-child(2) { width: 700px; }
+
+.post__postTopBar { padding: 12px; }
+
+.post__userInfo { font-weight: 700; }
+
+.post__userInfo img {
+  width: 32px;
+  margin-right: 20px;
+}
+
+.publicar {
+  color: #b2dffc;
+  transition: 300ms;
+  border: none;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* o focus é devido à acessibilidade para deficientes visuais */
+.publicar:hover,
+.publicar:focus {
+  color: #0095f6;
+  transition: 300ms;
+}
+
+.postNav { font-size: 25px; }
+
+.icon {
+  font-size: 20px;
+  padding: 10px;
+}
+
+.likesContainer {
+  padding: 10px;
+  display: flex;
+}
+
+.likesContainer img {
+  width: 20px;
+  margin-right: 15px;
+}
+
+/* || Sidebar styles */
+
+.sidebar {
+  position: fixed;
+  width: 293px;
+  top: 88px;
+  left: calc(50vw + 307px);
+  height: 530px;
+  display: none;
+  margin-left: 18px;
+}
+
+.sideBarHeader {
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.sideBarHeader__sidebarInfo { margin-left: 15px; }
+
+.sideBarHeader__sidebarInfo p:first-child{ font-weight: 700; }
+
+.sideBarHeader__sidebarInfo p:nth-child(2){ color: #8e8e8e; }
+
+.userName { font-weight: 700; }
+
+.userStatus { color: #8e8e8e; }
+
+.sidebarMain { width: 100%; }
+
+.sidebarMain__upperText { margin-bottom: 15px; }
+
+.sidebarMain__upperText p:first-of-type,
+.sidebar-info p:nth-of-type(2) { color: #8e8e8e; }
+
+.sidebarMain__upperText p:nth-of-type(2),
+.sidebar-info p:first-of-type { font-weight: 700; }
+
+.sidebarMain ul {
+  list-style-type: none;
+  list-style-position: inside;
+}
+
+.sidebarMain ul li {
+  display: flex;
+  margin: 5px;
+}
+
+.follow {
+  text-align: right;
+  width: 100%;
+  color: #136ef2;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.sidebarUserInfo {
+  padding-left: 15px;
+  width: calc(200px);
+  cursor: pointer;
+}
+
+.sidebar-footer {
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #c7c7c7;
+}
+
+.pesquisar {
+  position: relative;
+  left: 50vw;
+  top: 50px;
+  transform: translate(-50%, -100%);
+  width: 280px;
+  z-index: 3;
+}
+
+input.pesquisar::placeholder {
+  text-align: center;
+}
+
+.fixedBar ion-icon{ font-size: 20px; }
+
+.home { background-color: white; }
+
+.desktop-show { display: none; }
+
+@media (min-width: 614px) {
+  .mobile-show { display: none; }
+
+  .desktop-show { display: block; }
+
+  .mainContainer {
+    width: 614px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .storiesArrow { display: initial; }
+
+  .fixedBar { display: none; }
+}
+
+@media (min-width: 935px) { .sidebar { display: flex; } }
