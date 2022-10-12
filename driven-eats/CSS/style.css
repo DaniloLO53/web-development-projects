@@ -1,0 +1,201 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #e5e5e5;
+}
+
+header {
+  background-color: #cf2b2b;
+  color: #ffffff;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  padding: 18px;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+}
+
+header h1 {
+  font-family: 'Righteous', cursive;
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 55px;
+  letter-spacing: -0.012em;
+}
+
+header p {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+main {
+  /* position: absolute; */
+  position: relative;
+  top: 140px;
+}
+
+main section {
+  /* background-color: pink; */
+  margin: 18px;
+  margin-top: 28px;
+}
+
+main section:nth-of-type(3) {
+  margin-bottom: 300px;
+}
+
+main h2 {
+  font-family: 'Righteous', cursive;
+  letter-spacing: 0.018em;
+  line-height: 32px;
+  color: #333333;
+  font-weight: 400;
+  font-size: 26px;
+}
+
+.card {
+  margin-right: 18px;
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 9px;
+  box-shadow: 0 0 10px -4px rgba(0, 0, 0, 0.25);
+  /* background-color: pink; */
+  position: relative;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.card * {
+  /* margin-top: 8px; */
+}
+
+.card__figure {
+  /* background-color: red; */
+  width: 144px;
+  height: 110px;
+  /* text-align: center; */
+}
+
+.card__figure figcaption {
+  margin-top: 8px;
+  font-weight: 800;
+}
+
+.card__figure img {
+  width: 100%;
+  height: 87px;
+}
+
+.card p {
+  margin-top: 18px;
+}
+
+.card p:first-of-type {
+  color: #a6a6a6;
+}
+
+.card__mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  box-shadow: 0 0 10px -4px rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+}
+
+.choosed {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), inset 0 0 0 5px #32b72f;
+}
+
+.checkMark {
+  font-size: 21px;
+  color: #32b72f;
+  position: absolute;
+  right: 10px;
+  bottom: 15px;
+  display: none;
+}
+
+.checkChoosed {
+  display: block;
+}
+
+.foods,
+.drinks,
+.desserts {
+  /* background-color: #ffffff; */
+  margin-top: 16px;
+  width: 100%;
+  display: flex;
+  padding: 0px;
+  overflow-x: scroll;
+}
+
+.foods::-webkit-scrollbar,
+.drinks::-webkit-scrollbar,
+.desserts::-webkit-scrollbar {
+  display: none;
+}
+
+.close {
+  background-color: #ffffff;
+  position: fixed;
+  bottom: 0;
+  padding: 15px 25px 15px 25px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.close button {
+  padding: 15px 120px 15px 120px;
+  background-color: #cbcbcb;
+  border-radius: 50px;
+  font-size: 20px;
+  color: #ffffff;
+  border: none;
+}
+
+button.closeActive {
+  background-color: #32b72f;
+}
+
+button.closeActive:hover {
+  cursor: pointer;
+}
+
+dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 50%);
+  background-color: #50d074;
+  border: none;
+  width: 100%;
+  height: 353px;
+  border-radius: 9px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+  color: white;
+}
+
+dialog::backdrop {
+  background-color: rgba(255, 255, 255, 0.85);
+  
+}
