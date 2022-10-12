@@ -182,20 +182,87 @@ dialog {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  position: fixed;
+  /* position: fixed; */
   left: 50%;
   top: 0;
   transform: translate(-50%, 50%);
   background-color: #50d074;
   border: none;
   width: 100%;
-  height: 353px;
+  /* height: 353px; */
   border-radius: 9px;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
   color: white;
+  /* font-size: 22px; */
 }
+
+dialog * { font-size: 22px; }
 
 dialog::backdrop {
   background-color: rgba(255, 255, 255, 0.85);
-  
 }
+
+.dialog__header {
+  /* background-color: red; */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-size: 22px;
+}
+
+.dialog__body {
+  /* background-color: rebeccapurple; */
+  width: 100%;
+  /* font-size: 22px; */
+  display: flex;
+  justify-content: center;
+  /* flex-direction: column; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
+}
+
+.dialog__body table td {
+  /* background-color: pink; */
+  padding: 10px 40px 0px 40px;
+  /* vertical-align: middle; */
+  /* display: table; */
+  /* width: 100%; */
+  /* display: flex; */
+  /* justify-content: space-around; */
+}
+
+.dialog__body table tr {
+  /* margin: 20px 0 20px 0; */
+}
+
+.dialog__body table tr:last-of-type {
+  font-weight: 900;
+}
+
+dialog button:first-of-type {
+  background-color: white;
+  border: none;
+  border-radius: 100px;
+  padding: 20px;
+  color: #32b72f;
+  margin: 30px 0 30px 0;
+  font-weight: 700;
+}
+
+dialog button:last-of-type {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-weight: 700;
+  margin: 0px 0 30px 0;
+}
+
+/* .dialog__body div {
+  background-color: red;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+} */

@@ -20,8 +20,6 @@ const cardCreator = () => {
       cardElement.classList.add('card');
       check.classList.toggle('checkMark');
       figureElement.classList.add('card__figure');
-      imgElement.classList.add('card__image');
-      priceElement.classList.add('card__price');
       cardMask.classList.add('card__mask');
 
       imgElement.setAttribute('src', thumb);
@@ -43,9 +41,49 @@ const cardCreator = () => {
 };
 cardCreator();
 
+const loadRequest = () => {
+  const choosedCards = Array.from(document.querySelectorAll('.choosed')).map((card) => card.parentElement);
+
+  const requestInfo = {
+    food: {
+      name: choosedCards[0].firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerHTML,
+      price: choosedCards[0].lastElementChild.previousElementSibling.innerHTML,
+    },
+    drink: {
+      name: choosedCards[1].firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerHTML,
+      price: choosedCards[1].lastElementChild.previousElementSibling.innerHTML,
+    },
+    dessert: {
+      name: choosedCards[2].firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerHTML,
+      price: choosedCards[2].lastElementChild.previousElementSibling.innerHTML,
+    },
+  };
+
+  const total = Object.values(requestInfo).reduce((sum, info) => sum + Number(info.price.slice(3)), 0);
+  const totalTo2 = total.toFixed(2);
+  const totalFormated = `R$ ${totalTo2}`;
+
+  return { requestInfo, totalFormated };
+};
+
 const closeHandle = () => {
   const body = document.querySelector('.bodyWrapper');
+  const request = loadRequest();
   console.log(body);
+
+  const table = document.createElement('table');
+  const foodRow = document.createElement('tr');
+  const foodName = document.createElement('td');
+  const foodPrice = document.createElement('td');
+  const drinkRow = document.createElement('tr');
+  const drinkName = document.createElement('td');
+  const drinkPrice = document.createElement('td');
+  const dessertRow = document.createElement('tr');
+  const dessertName = document.createElement('td');
+  const dessertPrice = document.createElement('td');
+  const totalRow = document.createElement('tr');
+  const totalName = document.createElement('td');
+  const totalPrice = document.createElement('td');
 
   const dialog = document.createElement('dialog');
   const dialogHeader = document.createElement('div');
@@ -58,12 +96,42 @@ const closeHandle = () => {
   dialog.appendChild(dialogHeader);
   dialogHeader.appendChild(dialogTitle);
   dialog.appendChild(dialogBody);
+  dialogBody.appendChild(table);
+  table.appendChild(foodRow);
+  foodRow.appendChild(foodName);
+  foodRow.appendChild(foodPrice);
+  table.appendChild(drinkRow);
+  drinkRow.appendChild(drinkName);
+  drinkRow.appendChild(drinkPrice);
+  table.appendChild(dessertRow);
+  dessertRow.appendChild(dessertName);
+  dessertRow.appendChild(dessertPrice);
+  table.appendChild(totalRow);
+  totalRow.appendChild(totalName);
+  totalRow.appendChild(totalPrice);
+
   dialog.appendChild(finish);
   dialog.appendChild(cancel);
+
+  dialogHeader.classList.add('dialog__header');
+  dialogBody.classList.add('dialog__body');
+  totalPrice.classList.add('totalPrice');
+  finish.classList.add('finish');
 
   dialogTitle.innerHTML = 'Confirme seu pedido';
   finish.innerHTML = 'Tudo certo, pode pedir!';
   cancel.innerHTML = 'Cancelar';
+  foodName.innerHTML = request.requestInfo.food.name;
+  foodPrice.innerHTML = request.requestInfo.food.price;
+  drinkName.innerHTML = request.requestInfo.drink.name;
+  drinkPrice.innerHTML = request.requestInfo.drink.price;
+  dessertName.innerHTML = request.requestInfo.dessert.name;
+  dessertPrice.innerHTML = request.requestInfo.dessert.price;
+  totalName.innerHTML = 'Total';
+  totalPrice.innerHTML = request.totalFormated;
+
+  loadRequest();
+  document.querySelector('.finish').addEventListener('click', requestWhatsapp);
 
   dialog.showModal();
 
@@ -113,3 +181,33 @@ document.querySelector('.closeButton').addEventListener('click', () => {
   console.log(888)
   closeHandle();
 });
+
+const requestWhatsapp = () => {
+  const choosedCards = Array.from(document.querySelectorAll('.choosed')).map((card) => card.parentElement);
+
+  const requestInfo = {
+    food: {
+      name: choosedCards[0].firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerHTML,
+      price: choosedCards[0].lastElementChild.previousElementSibling.innerHTML,
+    },
+    drink: {
+      name: choosedCards[1].firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerHTML,
+      price: choosedCards[1].lastElementChild.previousElementSibling.innerHTML,
+    },
+    dessert: {
+      name: choosedCards[2].firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerHTML,
+      price: choosedCards[2].lastElementChild.previousElementSibling.innerHTML,
+    },
+  };
+  const totalPrice = document.querySelector('.totalPrice');
+
+  console.log(totalPrice);
+
+  const link = encodeURIComponent(`*Olá, gostaria de fazer o pedido:*
+    *- Prato:* ${requestInfo.food.name}
+    *- Bebida:* ${requestInfo.drink.name}
+    *- Sobremesa:* ${requestInfo.dessert.name}
+    *Total:* R$ ${totalPrice.innerHTML}`);
+
+  window.location.href = "https://wa.me/1111111111111?text=" + link;
+}
