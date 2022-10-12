@@ -76,7 +76,7 @@ export const data = {
     },
     {
       thumb: './assets/images/drinks/fanta.jpeg',
-      title: 'Coquinha gelada',
+      title: 'Fantas',
       description: 'Lata 350ml',
       price: 4.90,
     },
