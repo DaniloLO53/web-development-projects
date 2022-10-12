@@ -1,11 +1,20 @@
 const requestInfoBuilder = () => {
-  const choosedCards = Array.from(document.querySelectorAll('.choosed')).map((card) => card.parentElement);
+  const choosedCards = Array.from(document.querySelectorAll('.choosed'))
+    .map((card) => card.parentElement);
   const categories = ['food', 'drink', 'dessert'];
 
   const requestInfo = categories.map((category, index) => ({
     [category]: {
-      name: choosedCards[index].firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerHTML,
-      price: choosedCards[index].lastElementChild.previousElementSibling.innerHTML,
+      name: choosedCards[index]
+        .firstElementChild // check-icon
+        .nextElementSibling // figure tag
+        .firstElementChild // thumb
+        .nextElementSibling // name
+        .innerHTML,
+      price: choosedCards[index]
+        .lastElementChild // mask
+        .previousElementSibling // price
+        .innerHTML,
     }
   }));
 
@@ -16,7 +25,9 @@ const requestMealInfos = () => {
   const requestInfo = requestInfoBuilder();
   const total = {
     name: 'Total:',
-    price: 'R$ ' + (requestInfo.reduce((sum, info) => sum + Number(Object.values(info)[0].price.slice(3)), 0)).toFixed(2),
+    price: 'R$ ' + (requestInfo
+      .reduce((sum, info) => sum + Number(Object.values(info)[0].price.slice(3)), 0))
+      .toFixed(2),
   }
 
   return { ...requestInfo, total };
@@ -33,8 +44,12 @@ const tableBuilder = () => {
     const name = document.createElement('td');
     const price = document.createElement('td');
 
-    name.innerHTML = !category.name ? Object.values(category)[0].name : category.name;
-    price.innerHTML = !category.price ? Object.values(category)[0].price : category.price;
+    name.innerHTML = !category.name
+      ? Object.values(category)[0].name
+      : category.name;
+    price.innerHTML = !category.price
+      ? Object.values(category)[0].price
+      : category.price;
 
     categoryRow.appendChild(name);
     categoryRow.appendChild(price);
@@ -78,6 +93,7 @@ const closeHandle = () => {
   document.querySelector('.cancel').addEventListener('click', () => dialog.remove());
 
   dialog.showModal();
+
 };
 
 const activeClose = () => {
@@ -105,9 +121,10 @@ const cardClickHandle = () => {
         const categoryElement = event.target.parentElement.parentElement;
         const choosedInCategory = categoryElement.querySelectorAll('.choosed');
         const choosedCheckInCategory = categoryElement.querySelectorAll('.checkChoosed');
-        Array.from(choosedInCategory).map((element) => element.classList.remove('choosed'));
-        Array.from(choosedCheckInCategory).map((element) =>
-          element.classList.remove('checkChoosed'));
+        Array.from(choosedInCategory)
+          .map((element) => element.classList.remove('choosed'));
+        Array.from(choosedCheckInCategory)
+          .map((element) => element.classList.remove('checkChoosed'));
       }
       event.target.classList.toggle('choosed');
       event.target.parentElement.firstChild.classList.toggle('checkChoosed');
@@ -123,11 +140,18 @@ const requestWhatsapp = () => {
   const requestInfo = requestMealInfos();
   const totalPrice = document.querySelector('.totalPrice');
 
+  const name = prompt('Por favor, insira seu nome: ');
+  const adress = prompt('Por favor, insira seu endereço: ');
+
   const link = encodeURIComponent(`*Olá, gostaria de fazer o pedido:*
-    *- Prato:* ${requestInfo.food.name}
-    *- Bebida:* ${requestInfo.drink.name}
-    *- Sobremesa:* ${requestInfo.dessert.name}
-    *Total:* R$ ${totalPrice.innerHTML}`);
+    *- Prato:* ${requestInfo[0].food.name}
+    *- Bebida:* ${requestInfo[1].drink.name}
+    *- Sobremesa:* ${requestInfo[2].dessert.name}
+    *Total:* R$ ${requestInfo.total.price}
+    
+    Nome: ${name}
+    Endereço: ${adress}`
+  );
 
   window.location.href = "https://wa.me/1111111111111?text=" + link;
 }
