@@ -332,7 +332,30 @@ dialog button:last-of-type {
   overflow-y: hidden;
 }
 
+.rowHeader {
+  display: flex;
+  /* background-color: red; */
+  justify-content: space-evenly;
+  align-items: center;
+  height: 50px;
+}
 
+.filter {
+  /* height: 100%; */
+}
+
+.filter select{
+  /* background-color: rebeccapurple; */
+  padding: 10px;
+  font-size: 15px;
+  /* color: blue; */
+  /* font-weight: 700; */
+  /* height: 90%; */
+  /* border: none; */
+  /* background-color: unset; */
+}
+
+/* 
 @keyframes load {
   0% {
     left: -100%;
@@ -382,4 +405,4 @@ dialog button:last-of-type {
   100% {
     opacity: 0;
   }
-}
+} */
