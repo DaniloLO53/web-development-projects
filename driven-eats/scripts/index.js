@@ -155,3 +155,14 @@ const requestWhatsapp = () => {
 
   window.location.href = "https://wa.me/1111111111111?text=" + link;
 }
+
+const removeInitialAnimation = () => {
+  const animationWrapper = document.querySelector('.animationWrapper');
+  const body = document.querySelector('body');
+  body.classList.add('noScroll');
+  setTimeout(() => {
+    animationWrapper.remove();
+    body.classList.remove('noScroll');
+  }, 3500);
+};
+removeInitialAnimation();
