@@ -1,8 +1,9 @@
 import { data } from '../data.js';
 
-function drinkFilterHandle({ target }) {
-  const { value } = target;
-  const tagsSelector = {
+function filterHandle({ target }) {
+  const { value, name } = target;
+
+  const drinksTagsSelector = {
     'Filtrar': '',
     'Não Alcólico': '',
     'Cerveja': 'cerveja',
@@ -10,17 +11,8 @@ function drinkFilterHandle({ target }) {
     'Vinho Tinto': 'tinto',
     'Vinho Branco': 'branco',
   };
-  const tag = tagsSelector[value];
 
-  const oldCards = document.querySelectorAll(`[data-row="${1}"]`);
-  if (oldCards.length > 0) Array.from(oldCards).map((card) => card.remove());
-
-  cardCreator(tag, 1);
-}
-
-function dessertFilterHandle({ target }) {
-  const { value } = target;
-  const tagsSelector = {
+  const dessertsTagsSelector = {
     'Filtrar': '',
     'Chocolate': 'chocolate',
     'Mousses': 'mousse',
@@ -28,15 +20,16 @@ function dessertFilterHandle({ target }) {
     'Pudins': 'pudim',
     'Doces': 'doce',
   };
-  const tag = tagsSelector[value];
 
-  const oldCards = document.querySelectorAll(`[data-row="${2}"]`);
-  if (oldCards.length > 0) Array.from(oldCards).map((card) => card.remove());
-  cardCreator(tag, 2);
+  const tag = name === 'drink' ? drinksTagsSelector[value] : dessertsTagsSelector[value];
+  const row = name === 'drink' ? 1 : 2;
+
+  const oldCards = document.querySelectorAll(`[data-row="${row}"]`);
+  if (oldCards.length > 0) Array.from(oldCards).map((card) => card.remove()); // remove os cards não filtrados
+
+  cardCreator(tag, row);
 }
-
-document.querySelector('#drinkFilters').addEventListener('click', drinkFilterHandle);
-document.querySelector('#dessertFilters').addEventListener('click', dessertFilterHandle);
+Array.from(document.querySelectorAll('.filter')).map((filter) => filter.addEventListener('click', filterHandle));
 
 const activeClose = () => {
   const choosed = Array.from(document.querySelectorAll('.choosed'));

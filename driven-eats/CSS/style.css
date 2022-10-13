@@ -355,7 +355,7 @@ dialog button:last-of-type {
   /* background-color: unset; */
 }
 
-/* 
+
 @keyframes load {
   0% {
     left: -100%;
@@ -405,4 +405,4 @@ dialog button:last-of-type {
   100% {
     opacity: 0;
   }
-} */
+}
