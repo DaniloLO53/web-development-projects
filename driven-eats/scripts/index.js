@@ -5,6 +5,7 @@ function filterHandle({ target }) {
 
   const drinksTagsSelector = {
     'Filtrar': '',
+    'Sem Filtro': '',
     'Não Alcólico': '',
     'Cerveja': 'cerveja',
     'Vinhos': 'vinho',
@@ -14,6 +15,7 @@ function filterHandle({ target }) {
 
   const dessertsTagsSelector = {
     'Filtrar': '',
+    'Sem Filtro': '',
     'Chocolate': 'chocolate',
     'Mousses': 'mousse',
     'Bolos': 'bolo',
@@ -71,19 +73,19 @@ const cardClickHandle = () => {
 cardClickHandle();
 
 
-function cardCreator(tag = '', categoryRowIndex) {
+function cardCreator(tag, categoryRowIndex) {
+  const categoryFilterName = Object.keys(data)[categoryRowIndex];
   const filteredData = {
     ...data,
-    [Object.keys(data)[categoryRowIndex || 0]]: data[Object.keys(data)[categoryRowIndex || 0]].filter((item) => item.tags.includes(tag)),
-  }
+    [categoryFilterName]: data[categoryFilterName]?.filter((item) => item.tags.includes(tag)),
+  };
 
-  const dataRendered = categoryRowIndex === undefined ? data : filteredData;
+  const dataRendered = !categoryRowIndex ? data : filteredData;
 
   for (let index = 0; index < 3; index += 1) {
-    if (index !== categoryRowIndex && categoryRowIndex !== undefined) continue;
-    console.log(dataRendered);
-    for (let item = 0; item < dataRendered[Object.keys(dataRendered)[index]].length; item += 1) {
+    if (index !== categoryRowIndex && categoryRowIndex) continue;
 
+    for (let item = 0; item < dataRendered[Object.keys(dataRendered)[index]].length; item += 1) {
       const thumb = dataRendered[Object.keys(dataRendered)[index]][item].thumb;
       const title = dataRendered[Object.keys(dataRendered)[index]][item].title;
       const description = dataRendered[Object.keys(dataRendered)[index]][item].description;
@@ -121,7 +123,6 @@ function cardCreator(tag = '', categoryRowIndex) {
     }
   }
   cardClickHandle();
-
 };
 cardCreator();
 
@@ -220,7 +221,6 @@ const closeHandle = () => {
   document.querySelector('.cancel').addEventListener('click', () => dialog.remove());
 
   dialog.showModal();
-
 };
 
 document.querySelector('.closeButton').addEventListener('click', () => closeHandle());
@@ -248,6 +248,7 @@ const requestWhatsapp = () => {
 const removeInitialAnimation = () => {
   const animationWrapper = document.querySelector('.animationWrapper');
   const body = document.querySelector('body');
+
   body.classList.add('noScroll');
   setTimeout(() => {
     animationWrapper.remove();
