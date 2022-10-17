@@ -85,11 +85,14 @@ function cardCreator(tag, categoryRowIndex) {
   for (let index = 0; index < 3; index += 1) {
     if (index !== categoryRowIndex && categoryRowIndex) continue;
 
-    for (let item = 0; item < dataRendered[Object.keys(dataRendered)[index]].length; item += 1) {
-      const thumb = dataRendered[Object.keys(dataRendered)[index]][item].thumb;
-      const title = dataRendered[Object.keys(dataRendered)[index]][item].title;
-      const description = dataRendered[Object.keys(dataRendered)[index]][item].description;
-      const price = dataRendered[Object.keys(dataRendered)[index]][item].price;
+    const elements = dataRendered[Object.keys(dataRendered)[index]];
+    for (let item = 0; item < elements.length; item += 1) {
+      const element = elements[item];
+
+      const thumb = element.thumb;
+      const title = element.title;
+      const description = element.description;
+      const price = element.price;
 
       const cardElement = document.createElement('div');
       const check = document.createElement('ion-icon');
@@ -227,7 +230,6 @@ document.querySelector('.closeButton').addEventListener('click', () => closeHand
 
 const requestWhatsapp = () => {
   const requestInfo = requestMealInfos();
-  const totalPrice = document.querySelector('.totalPrice');
 
   const name = prompt('Por favor, insira seu nome: ');
   const adress = prompt('Por favor, insira seu endereço: ');
@@ -242,7 +244,7 @@ const requestWhatsapp = () => {
     Endereço: ${adress}`
   );
 
-  window.location.href = "https://wa.me/1111111111111?text=" + link;
+  window.location.href = "https://wa.me/+5521995784778?text=" + link;
 }
 
 const removeInitialAnimation = () => {
