@@ -1,4 +1,6 @@
 let initialNumber = 0;
+let cardsFlipped = 0;
+let cardsSelected = [];
 const cardsContainer = document.querySelector('.cardsContainer');
 
 const initialGameConfig = () => {
@@ -52,8 +54,35 @@ const randomizeCards = () => {
   randomized.map((card) => cardsContainer.appendChild(card));
 };
 
+const gameOver = () => alert(`Você ganhou em ${cardsFlipped} jogadas!`);
+
 const handleClick = ({ target }) => {
   target.parentElement.classList.toggle('clicked');
+  cardsFlipped += 1;
+  cardsSelected.push(target.previousElementSibling);
+
+  if (cardsSelected.length === 2) {
+    const correct = cardsSelected[0].className === cardsSelected[1].className;
+    console.log(cardsSelected);
+
+    if (!correct) {
+      console.log(cardsSelected);
+
+      setTimeout(() => {
+        cardsSelected.map((card) => card.parentElement.classList.remove('clicked'));
+        cardsSelected = [];
+      }, 1000);
+    }
+    setTimeout(() => cardsSelected = [], 1000);
+  }
+
+  // console.log(document.querySelectorAll('.clicked').length, initialNumber);
+  if (document.querySelectorAll('.clicked').length === Number(initialNumber)) {
+    setTimeout(() => gameOver(), 1000);
+  }
+
+  // console.log(cardsSelected);
+  // console.log(cardsFlipped);
 }
 
 window.addEventListener('load', initialGameConfig);
