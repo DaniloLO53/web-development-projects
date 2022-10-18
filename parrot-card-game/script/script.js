@@ -1,7 +1,24 @@
 let initialNumber = 0;
 let cardsFlipped = 0;
 let cardsSelected = [];
+let timerElement = 0;
+let interval;
 const cardsContainer = document.querySelector('.cardsContainer');
+
+const timer = () => {
+  const title = document.querySelector('.title');
+
+  const counter = document.createElement('h3');
+  counter.classList.add('counter');
+  title.appendChild(counter);
+
+  console.log(interval);
+
+  interval = setInterval(() => {
+    timerElement += 1;
+    counter.innerHTML = `Tempo: ${timerElement}`;
+  }, 1000);
+}
 
 const initialGameConfig = () => {
   let cardNumber = prompt('Com quantas cartas quer começar? Escolha um número par de 4 a 14');
@@ -54,7 +71,36 @@ const randomizeCards = () => {
   randomized.map((card) => cardsContainer.appendChild(card));
 };
 
-const gameOver = () => alert(`Você ganhou em ${cardsFlipped} jogadas!`);
+const gameOver = () => {
+  alert(`Você ganhou em ${cardsFlipped} jogadas e ${timerElement} segundos!`);
+  let restart = prompt('Deseja reiniciar a partida?');
+  console.log(restart);
+
+  // while (restart === 'sim' || restart !== 'não') {
+  //   restart = prompt('Use apenas "sim" ou "não"');
+  // }
+
+  if (restart === 'sim') {
+    Array.from(document.querySelectorAll('.card')).map((card) => card.remove());
+    document.querySelector('.counter').remove();
+
+    // let initialNumber = 0;
+    // let cardsFlipped = 0;
+    // let cardsSelected = [];
+    // let timerElement = 0;
+    // const cardsContainer = document.querySelector('.cardsContainer');
+
+    initialGameConfig();
+    cardCreator();
+    setBackground();
+    randomizeCards();
+    clearInterval(interval);
+    cardsFlipped = 0;
+    timerElement = 0;
+    timer();
+  }
+
+};
 
 const handleClick = ({ target }) => {
   target.parentElement.classList.toggle('clicked');
@@ -63,11 +109,8 @@ const handleClick = ({ target }) => {
 
   if (cardsSelected.length === 2) {
     const correct = cardsSelected[0].className === cardsSelected[1].className;
-    console.log(cardsSelected);
 
     if (!correct) {
-      console.log(cardsSelected);
-
       setTimeout(() => {
         cardsSelected.map((card) => card.parentElement.classList.remove('clicked'));
         cardsSelected = [];
@@ -76,16 +119,14 @@ const handleClick = ({ target }) => {
     setTimeout(() => cardsSelected = [], 1000);
   }
 
-  // console.log(document.querySelectorAll('.clicked').length, initialNumber);
   if (document.querySelectorAll('.clicked').length === Number(initialNumber)) {
     setTimeout(() => gameOver(), 1000);
   }
 
-  // console.log(cardsSelected);
-  // console.log(cardsFlipped);
 }
 
 window.addEventListener('load', initialGameConfig);
 window.addEventListener('load', cardCreator);
 window.addEventListener('load', setBackground);
 window.addEventListener('load', randomizeCards);
+window.addEventListener('load', timer);
