@@ -12,19 +12,24 @@ const timer = () => {
   counter.classList.add('counter');
   title.appendChild(counter);
 
-  console.log(interval);
-
   interval = setInterval(() => {
     timerElement += 1;
     counter.innerHTML = `Tempo: ${timerElement}`;
   }, 1000);
-}
+};
+
+const windowResizer = () => {
+  const cardsContainer = document.querySelector('.cardsContainer');
+
+  cardsContainer.style.width = initialNumber / 2 * 220 + 'px';
+};
 
 const initialGameConfig = () => {
-  let cardNumber = prompt('Com quantas cartas quer começar? Escolha um número par de 4 a 14');
+  const text = 'Com quantas cartas quer começar? Escolha um número par de 4 a 14';
+  let cardNumber = prompt(text);
 
   while (cardNumber % 2 !== 0 || (cardNumber < 4 || cardNumber > 14)) {
-    cardNumber = prompt('Com quantas cartas quer começar? Escolha um número par de 4 a 14');
+    cardNumber = prompt(text);
   }
   initialNumber = cardNumber;
 };
@@ -44,16 +49,27 @@ const cardCreator = () => {
     cardContainer.appendChild(back);
     cardContainer.appendChild(front);
 
+    back.setAttribute('id', index);
+
     cardContainer.addEventListener('click', handleClick);
 
     cardsContainer.appendChild(cardContainer);
   }
-}
+};
 
 const setBackground = () => {
   const cards = Array.from(document.querySelectorAll('.back'));
 
-  const backgrounds = ['bobrossparrot', 'explodyparrot', 'fiestaparrot', 'metalparrot', 'revertitparrot', 'tripletsparrot', 'unicornparrot'];
+  const backgrounds = [
+    'bobrossparrot',
+    'explodyparrot',
+    'fiestaparrot',
+    'metalparrot',
+    'revertitparrot',
+    'tripletsparrot',
+    'unicornparrot'
+  ];
+
   let nameIndex = 0;
   let cardIndex = nameIndex;
 
@@ -62,7 +78,7 @@ const setBackground = () => {
     cards[cardIndex + 1].classList.add(backgrounds[nameIndex]);
     cardIndex += 2;
   }
-}
+};
 
 const randomizeCards = () => {
   const cards = Array.from(document.querySelectorAll('.card'));
@@ -74,23 +90,13 @@ const randomizeCards = () => {
 const gameOver = () => {
   alert(`Você ganhou em ${cardsFlipped} jogadas e ${timerElement} segundos!`);
   let restart = prompt('Deseja reiniciar a partida?');
-  console.log(restart);
-
-  // while (restart === 'sim' || restart !== 'não') {
-  //   restart = prompt('Use apenas "sim" ou "não"');
-  // }
 
   if (restart === 'sim') {
     Array.from(document.querySelectorAll('.card')).map((card) => card.remove());
     document.querySelector('.counter').remove();
 
-    // let initialNumber = 0;
-    // let cardsFlipped = 0;
-    // let cardsSelected = [];
-    // let timerElement = 0;
-    // const cardsContainer = document.querySelector('.cardsContainer');
-
     initialGameConfig();
+    windowResizer();
     cardCreator();
     setBackground();
     randomizeCards();
@@ -99,13 +105,25 @@ const gameOver = () => {
     timerElement = 0;
     timer();
   }
-
 };
 
+const cardBlocker = (target) => {
+  console.log(target);
+  target.preventDefault();
+}
+
 const handleClick = ({ target }) => {
-  target.parentElement.classList.toggle('clicked');
+  console.log(target, cardsSelected[0]);
+  if (target.getAttribute('id') === cardsSelected[0]?.getAttribute('id')) {
+    console.log('opa');
+    return;
+  }
+  target.parentElement.classList.add('clicked');
   cardsFlipped += 1;
   cardsSelected.push(target.previousElementSibling);
+  // console.log(cardsSelected, target);
+
+  // cardBlocker(target.previousElementSibling);
 
   if (cardsSelected.length === 2) {
     const correct = cardsSelected[0].className === cardsSelected[1].className;
@@ -122,10 +140,10 @@ const handleClick = ({ target }) => {
   if (document.querySelectorAll('.clicked').length === Number(initialNumber)) {
     setTimeout(() => gameOver(), 1000);
   }
-
-}
+};
 
 window.addEventListener('load', initialGameConfig);
+window.addEventListener('load', windowResizer);
 window.addEventListener('load', cardCreator);
 window.addEventListener('load', setBackground);
 window.addEventListener('load', randomizeCards);
