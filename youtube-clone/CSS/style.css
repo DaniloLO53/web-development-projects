@@ -198,10 +198,12 @@ ion-icon {
   /* flex-basis: fit-content; */
   max-height: 30px;
   overflow: hidden;
-  white-space: pre;
+  white-space: nowrap;
   outline: 5px solid #efefef;
   display: flex;
   justify-content: flex-start;
+  text-overflow: ellipsis;
+  display: block;
 }
 
 .mainContent__body {
